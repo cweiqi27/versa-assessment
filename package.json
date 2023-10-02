@@ -2,30 +2,45 @@
   "name": "versa-assessment",
   "version": "1.0.0",
   "description": "may the fourth",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --ignore-path .gitignore --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "lint": "eslint \"src/**/*.ts\""
+    "lint": "eslint --fix --ext .ts ./src --ignore-path .gitignore",
+    "postinstall": "husky install",
+    "validate": "lint-staged",
+    "build": "tsc",
+    "start": "node -r tsconfig-paths/register ./dist/app.js"
   },
   "author": "Chan Wei Qi",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@types/jest": "^29.5.5",
     "@types/node": "^20.7.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-typescript": "^3.0.0",
+    "husky": "^8.0.3",
     "jest": "^29.7.0",
+    "lint-staged": "^14.0.1",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": "18.x"
+    "node": ">=18.x"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "pnpm lint",
+      "pnpm format"
+    ]
   }
 }
