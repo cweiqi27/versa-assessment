@@ -48,7 +48,7 @@ Entities should have no clue on the implementation of the outer layers, such as 
 
 #### HTTP
 
-I used core Node.js's `http` and `https` module to handle all the requests. For this particular script I don't need to use `http`, but I included it like I would as if I am running a RESTful API server where I would handle res and req based on different routes. However, in a real app I would probably use established solutions like express or fastify and avoid reinventing the wheel.
+I used core Node.js's `http` and `https` module to handle all the requests. However, in a real app I would probably use established solutions like express or fastify and avoid reinventing the wheel.
 
 #### Formatters and Linters
 
